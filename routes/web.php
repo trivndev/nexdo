@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SocialiteController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -32,4 +33,9 @@ Route::middleware(['auth'])->group(function () {
             ),
         )
         ->name('two-factor.show');
+});
+
+Route::middleware(['guest'])->prefix("/auth/{provider}")->name("auth.")->group(function () {
+    Route::get('/redirect', [SocialiteController::class, 'redirect'])->name('redirect');
+    Route::get('/callback', [SocialiteController::class, 'callback'])->name('callback');
 });
