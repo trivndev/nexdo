@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string("provider_id")->nullable()->after("password");
             $table->string("provider")->nullable()->after("provider_id");
-            $table->string("provider_token")->nullable()->after("provider");
-            $table->string("provider_refresh_token")->nullable()->after("provider_token");
+            $table->text("provider_token")->nullable()->after("provider");
+            $table->text("provider_refresh_token")->nullable()->after("provider_token");
         });
     }
 

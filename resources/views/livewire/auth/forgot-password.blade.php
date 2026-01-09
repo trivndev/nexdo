@@ -1,4 +1,4 @@
-<x-layouts.auth>
+<x-layouts.auth :title="'Forgot password ' . config('app.name')">
     <div class="lg:w-1/2 w-full">
         <div class="max-w-lg w-full p-8 mx-auto">
             <div class="flex flex-col gap-6">

@@ -1,4 +1,4 @@
-<x-layouts.auth>
+<x-layouts.auth :title="'Login ' . config('app.name')">
     <div class="lg:w-1/2 w-full">
         <div class="max-w-lg w-full p-8 mx-auto">
             <div class="flex flex-col gap-6">
@@ -57,7 +57,7 @@
             <div>
                 <div class="flex items-center gap-3 my-6 w-full">
                     <div class="flex-1 h-px bg-gray-300"></div>
-                    <span class="text-sm text-gray-500 whitespace-nowrap">or login with</span>
+                <span class="text-sm text-gray-600 dark:text-gray-200 whitespace-nowrap">or login with</span>
                     <div class="flex-1 h-px bg-gray-300"></div>
                 </div>
 
