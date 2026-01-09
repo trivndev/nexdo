@@ -1,4 +1,4 @@
-<section class="w-full">
+    <section class="w-full">
     @include('partials.settings-heading')
 
     <flux:heading class="sr-only">Appearance Settings</flux:heading>
