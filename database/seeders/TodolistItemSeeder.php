@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TodolistSeeder extends Seeder
+class TodolistItemSeeder extends Seeder
 {
     /**
      * Run the database seeds.

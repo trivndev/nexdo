@@ -10,28 +10,20 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('todolists', function (Blueprint $table) {
+        Schema::create('todolist_items', function (Blueprint $table) {
             $table->id();
-            $table->string("title", 255);
-            $table->string("description");
+
+            $table->string("title", 64);
+            $table->string("short_description", 128);
+
+            $table->foreignUuid('group_id')->constrained('todolist_groups');
 
             $table->unsignedTinyInteger('priority_id');
-            $table->unsignedTinyInteger('urgency_id');
-            $table->unsignedTinyInteger('category_id');
             $table->unsignedTinyInteger('status_id');
+
             $table->foreign("priority_id")
                 ->references('id')
                 ->on('todolist_priorities')
-                ->cascadeOnUpdate()
-                ->restrictOnDelete();
-            $table->foreign("category_id")
-                ->references('id')
-                ->on('todolist_categories')
-                ->cascadeOnUpdate()
-                ->restrictOnDelete();
-            $table->foreign("urgency_id")
-                ->references('id')
-                ->on('todolist_urgencies')
                 ->cascadeOnUpdate()
                 ->restrictOnDelete();
             $table->foreign("status_id")
@@ -39,8 +31,10 @@ return new class extends Migration {
                 ->on('todolist_statuses')
                 ->cascadeOnUpdate()
                 ->restrictOnDelete();
+
             $table->dateTime("due_date");
-            $table->index(['priority_id', 'urgency_id', 'status_id', 'category_id']);
+
+            $table->index(['priority_id', 'status_id']);
             $table->timestamps();
         });
     }
@@ -50,6 +44,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('todolists');
+        Schema::dropIfExists('todolist_items');
     }
 };
